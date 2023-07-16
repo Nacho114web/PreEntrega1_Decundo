@@ -1,15 +1,18 @@
-import './NavBar.css'
-import logo from './assets/logo.png'
+import "./NavBar.css";
+import logo from "./assets/logo.png";
 import CartWidget from "../CartWidget/CartWidget";
+import { Link, NavLink } from "react-router-dom";
 
 const NavBar = () =>{
     return (
         <nav className="navBarContainer">
-            <img src= {logo} alt="logo de LeoMás" />
-            <button className="navBarButton">Libros Nuevos</button>
-            <button className="navBarButton">E-books</button>
-            <button className="navBarButton">Libros Usados</button>
-            <CartWidget></CartWidget>
+            <Link to="/">
+                <img src={logo} alt="logo de LeoMás" />
+            </Link>
+            <NavLink to={ "category/nuevo" } className={ ({ isActive})=> isActive ? "activeNavBarButton" : "navBarButton" }>Libros Nuevos</NavLink> 
+            <NavLink to={ "category/e-book" } className={ ({ isActive})=> isActive ? "activeNavBarButton" : "navBarButton" }>e-Books</NavLink> 
+            <NavLink to={ "category/usado" } className={ ({ isActive})=> isActive ? "activeNavBarButton" : "navBarButton" }>Libros Usados</NavLink> 
+            <CartWidget />
         </nav>
     );
 }
